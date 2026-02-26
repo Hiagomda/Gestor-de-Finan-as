@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FinanceApp</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orbit"></div>
+  <!-- Cabecalho com chamada e acesso rapido -->
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Controle financeiro inteligente</p>
+      <h1>FinanceApp</h1>
+      <p class="subtitle">Organize receitas e despesas, veja seu saldo mensal e acompanhe categorias em tempo real.</p>
+    </div>
+    <div class="hero-panel">
+      <div class="panel-header">
+        <h2>Autenticacao</h2>
+        <p class="muted">Crie uma conta ou entre para acessar suas transacoes.</p>
+      </div>
+      <div class="auth-tabs">
+        <button id="tab-login" class="tab active" type="button">Login</button>
+        <button id="tab-register" class="tab" type="button">Registrar</button>
+      </div>
+      <!-- Formulario de autenticacao -->
+      <form id="auth-form" class="stack">
+        <label>
+          Usuario
+          <input id="auth-username" type="text" placeholder="seu.usuario" required />
+        </label>
+        <label>
+          Senha
+          <input id="auth-password" type="password" placeholder="********" required />
+        </label>
+        <button id="auth-submit" class="btn primary" type="submit">Entrar</button>
+        <p id="auth-status" class="status"></p>
+      </form>
+    </div>
+  </header>
+
+  <main class="content">
+    <!-- Cadastro e edicao de transacoes -->
+    <section class="card" id="transaction-card">
+      <div class="card-header">
+        <h2>Nova transacao</h2>
+        <p class="muted">Preencha os dados para registrar sua movimentacao.</p>
+      </div>
+      <form id="transaction-form" class="grid">
+        <label>
+          Tipo
+          <select id="tx-type" required>
+            <option value="INCOME">Entrada</option>
+            <option value="EXPENSE">Saida</option>
+          </select>
+        </label>
+        <label>
+          Valor
+          <input id="tx-amount" type="number" step="0.01" min="0" placeholder="0.00" required />
+        </label>
+        <label>
+          Categoria
+          <input id="tx-category" type="text" placeholder="Alimentacao" required />
+        </label>
+        <label>
+          Data
+          <input id="tx-date" type="date" required />
+        </label>
+        <label class="span-2">
+          Descricao
+          <input id="tx-description" type="text" placeholder="Observacoes" />
+        </label>
+        <div class="actions">
+          <button id="tx-submit" class="btn primary" type="submit">Salvar</button>
+          <button id="tx-cancel" class="btn ghost" type="button">Cancelar edicao</button>
+        </div>
+        <p id="tx-status" class="status span-2"></p>
+      </form>
+    </section>
+
+    <!-- Resumo mensal e categorias -->
+    <section class="card" id="report-card">
+      <div class="card-header">
+        <h2>Relatorio mensal</h2>
+        <p class="muted">Saldo e totais por categoria do mes selecionado.</p>
+      </div>
+      <div class="report-controls">
+        <label>
+          Ano
+          <input id="report-year" type="number" min="2000" max="2100" />
+        </label>
+        <label>
+          Mes
+          <input id="report-month" type="number" min="1" max="12" />
+        </label>
+        <button id="report-refresh" class="btn secondary" type="button">Atualizar</button>
+      </div>
+      <div class="report-summary">
+        <div>
+          <p class="muted">Saldo do mes</p>
+          <h3 id="report-balance">R$ 0,00</h3>
+        </div>
+        <div>
+          <p class="muted">Total de entradas</p>
+          <h3 id="report-income">R$ 0,00</h3>
+        </div>
+        <div>
+          <p class="muted">Total de despesas</p>
+          <h3 id="report-expense">R$ 0,00</h3>
+        </div>
+        <div>
+          <p class="muted">Categorias</p>
+          <ul id="report-categories" class="category-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabela de transacoes -->
+    <section class="card" id="list-card">
+      <div class="card-header">
+        <h2>Transacoes</h2>
+        <p class="muted">Gerencie sua lista de movimentacoes.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Valor</th>
+              <th>Categoria</th>
+              <th>Data</th>
+              <th>Descricao</th>
+              <th>Acoes</th>
+            </tr>
+          </thead>
+          <tbody id="tx-table"></tbody>
+        </table>
+      </div>
+      <p id="list-status" class="status"></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Desenvolvido por Hiago Araújo</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

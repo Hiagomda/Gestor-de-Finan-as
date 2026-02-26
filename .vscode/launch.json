@@ -1,0 +1,15 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "java",
+			"name": "Debug FinanceApp",
+			"request": "launch",
+			"mainClass": "com.financeapp.FinanceAppApplication",
+			"projectName": "FinanceApp",
+			"env": {
+				"JAVA_HOME": "C:\\Program Files\\Java\\jdk-17"
+			}
+		}
+	]
+}
